@@ -53,6 +53,8 @@ function build(){
    .pipe(dest('dist'))
 }
 
+function git(){}
+
 exports.styles = styles;
 exports.watching = watching;
 exports.browsersync = browsersync;
