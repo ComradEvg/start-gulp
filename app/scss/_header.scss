@@ -1,0 +1,333 @@
+.header {
+   position: fixed;
+   width: 100%;
+   z-index: 50;
+   top: 0;
+   left: 0;
+   font-weight: 500;
+   font-size: 22px;
+   line-height: 26px;
+   background-color: #fff;
+   @media (orientation: portrait) and (max-width: 1000px) {
+      font-size: 16px;
+   }
+   @media (orientation: landscape) and (max-height: 1000px) {
+      font-size: 16px;
+   }
+   &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   // ====================================
+}
+// ПЛАШКА=========================
+.header.active {
+   background: rgba(0, 0, 0, 0.45);
+   backdrop-filter: blur(16px);
+   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+// БУРГЕР=============================
+.burger {
+   display: none;
+   position: absolute;
+   right: 20px;
+   top: 20px;
+   width: 28px;
+   height: 23px;
+   & span {
+      position: absolute;
+      background-color: #000;
+      left: 0px;
+      width: 100%;
+      height: 3px;
+      top: 10px;
+   }
+   &::before,
+   &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #000;
+   }
+   &::before {
+      top: 0;
+   }
+   &::after {
+      bottom: 0;
+   }
+   @media (orientation: portrait) and (max-width: 768px) {
+      display: block;
+      z-index: 40;
+   }
+   @media (orientation: landscape) and (max-height: 768px) {
+      display: block;
+      z-index: 40;
+   }
+}
+.burger.active span {
+   transform: scale(0);
+}
+.burger.active::before {
+   transform: rotate(45deg);
+   top: 50%;
+   transition: 0.3s linear;
+}
+.burger.active::after {
+   transform: rotate(-45deg);
+   top: 50%;
+   transition: 0.3s linear;
+}
+// ===============================
+$height: 100px;
+
+.menu {
+   align-items: center;
+   display: flex;
+   justify-content: space-around;
+   height: $height;
+   transition: 0.3s ease;
+   &__inner {
+      display: flex;
+      flex: 1 1 40%;
+      justify-content: space-around;
+      align-items: center;
+      @media (orientation: portrait) and (max-width: 768px) {
+         flex-direction: column;
+         justify-content: center;
+         flex: none;
+         color: rgba(255, 255, 255, 0.815);
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         flex-direction: column;
+         justify-content: center;
+         flex: none;
+         color: rgba(255, 255, 255, 0.815);
+      }
+   }
+
+   &__item {
+
+   }
+
+   &__link {
+      text-transform: capitalize;
+      margin: 0px 30px;
+      @media (orientation: portrait) and (max-width: 1065px) {
+         margin: 0px 17px;
+      }
+      @media (orientation: landscape) and (max-height: 1065px) {
+         margin: 0px 17px;
+      }
+      @media (orientation: portrait) and (max-width: 768px) {
+         margin: 10px 0px;
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         margin: 10px 0px;
+      }
+   }
+   &__link-first {
+      margin-left: 0px;
+   }
+   @media (orientation: portrait) and (max-width: 768px) {
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      padding: 0 10%;
+      right: -100%;
+      top: 0;
+      height: 100vh;
+      backdrop-filter: blur(18px) saturate(200%);
+      -webkit-backdrop-filter: blur(18px) saturate(200%);
+      background-color: rgba(17, 25, 40, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      font-size: 30px;
+      line-height: 35px;
+   }
+   @media (orientation: landscape) and (max-height: 768px) {
+      flex-direction: column;
+      position: absolute;
+      justify-content: center;
+      padding: 0 10%;
+      right: -100%;
+      top: 0;
+      backdrop-filter: blur(18px) saturate(200%);
+      -webkit-backdrop-filter: blur(18px) saturate(200%);
+      background-color: rgba(17, 25, 40, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.125);
+      height: 100vh;
+      font-size: 30px;
+      line-height: 35px;
+   }
+}
+
+.menu.active {
+   right: 0;
+}
+
+.select {
+   position: relative;
+   z-index: 49;
+   &.open {
+      .select__drop-down {
+         display: block;
+      }
+      .select__backdrop {
+         display: block;
+      }
+   }
+   // .select__input
+
+   &__input {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      justify-content: space-between;
+      width: 152px;
+      @media (orientation: portrait) and (max-width: 1000px) {
+         width: 120px;
+      }
+      @media (orientation: landscape) and (max-height: 1000px) {
+         width: 120px;
+      }
+      @media (orientation: portrait) and (max-width: 768px) {
+         width: 200px;
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         width: 200px;
+      }
+   }
+
+   &__input span {
+      display: block;
+   }
+
+   // .select__drop-down
+
+   &__drop-down {
+      display: none;
+      background-color: #fff;
+      position: absolute;
+      top: 26px;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #000;
+      @media (orientation: portrait) and (max-width: 768px) {
+         position: static;
+         border: none;
+         background-color: transparent;
+         max-height: none;
+         height: 100%;
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         position: static;
+         border: none;
+         background-color: transparent;
+         max-height: none;
+         height: 100%;
+      }
+   }
+   // .select__list
+
+   &__list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+   }
+
+   // .select__item
+   &__backdrop {
+      position: fixed;
+      display: none;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: transparent;
+   }
+
+   &__item {
+      padding: 5px 15px;
+      font-size: 16px;
+      @media (orientation: portrait) and (max-width: 768px) {
+     padding: 2px 15px;
+     line-height: 28px;
+   }
+   @media (orientation: landscape) and (max-height: 768px) {
+      padding: 2px 15px;
+      line-height: 28px;
+   }
+
+      &:hover {
+         background-color: #000;
+         color: #fff;
+         cursor: pointer;
+         transition: 0.15s background-color ease-in;
+      }
+      &.selected {
+         background-color: #000;
+         color: #fff;
+      }
+   }
+}
+.select__arow {
+   width: 15px;
+   height: 9px;
+   @media (orientation: portrait) and (max-width: 768px) {
+      fill: rgba(255, 255, 255, 0.815);
+   }
+   @media (orientation: landscape) and (max-height: 768px) {
+      fill: rgba(255, 255, 255, 0.815);
+   }
+}
+.select__arow.up {
+   transform: rotate(180deg);
+}
+
+.header {
+   &__btn-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+}
+.header__btn-caption {
+   margin-right: 30px;
+   @media (orientation: portrait) and (max-width: 1000px) {
+      margin-right: 20px;
+   }
+   @media (orientation: landscape) and (max-height: 1000px) {
+      margin-right: 20px;
+   }
+}
+
+.btn-header {
+   @media (orientation: portrait) and (max-width: 1000px) {
+      font-size: 16px;
+      width: 155px;
+      height: 45px;
+   }
+   @media (orientation: landscape) and (max-height: 1000px) {
+      font-size: 16px;
+      width: 155px;
+      height: 45px;
+   }
+}
+
+.header__btn-inner.active{
+   position: absolute;
+   bottom: 10px;
+   right: 5px;
+   color: rgba(255, 255, 255, 0.815);
+   font-size: 18px; 
+   .btn-header{
+      width: 140px;
+      color: rgba(255, 255, 255, 0.815);
+   }
+}

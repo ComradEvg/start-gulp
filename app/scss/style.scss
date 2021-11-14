@@ -1,0 +1,120 @@
+@import "_fonts";
+@import "_nullstyle";
+
+body.lock {
+   @media (max-width: 767px), (max-height: 767px) {
+      overflow: hidden;
+   }
+}
+::-webkit-scrollbar {
+   width: 0px;
+   background: transparent;
+}
+// =================================
+.wrapper {
+   width: 100%;
+   min-height: 100%;
+   overflow: hidden;
+}
+
+// КОНТЕЙНЕР
+.container {
+   max-width: 1200px;
+   padding: 0px 30px;
+   margin: 0 auto;
+}
+// ==================================
+// ОБОЛОЧКА ДЛЯ СОЗДАНИЯ ФУЛСКРИНА
+.page {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   display: flex;
+   flex-direction: column;
+}
+.btn {
+   font-weight: 500;
+   font-size: 22px;
+   line-height: 26px;
+   width: 200px;
+   height: 70px;
+   border: 2px solid #000;
+   &:hover {
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.15s background-color ease-in;
+   }
+}
+// ==================================
+// ШАПКА
+@import "_header.scss";
+// =================================
+// ФУЛЛСКРИНОВЫЙ ЭКРАН
+.main-screen {
+   flex: 1 0 100%;
+   position: relative;
+   overflow: hidden;
+   background-color: #f7d5ca;
+   padding-top: $height;
+   
+   @media (orientation: portrait) and (max-width: 1280px) {
+      flex: none;
+      height: 800px;
+   }
+
+   &__bg-image {
+      padding-top: $height;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      img {
+         object-fit: contain;
+         height: 100%;
+      }
+   }
+
+   &__information-inner {
+      width: 665px;
+      height: 415px;
+      background-color: #fff;
+      padding: 50px 60px 45px 60px;
+      margin-top: 73px;
+   }
+
+   &__information-title {
+      margin-bottom: 32px;
+   }
+
+   &__information-subtitle {
+       margin-bottom: 41px;
+   }
+
+   &__information-btn-inner {
+      width: 415px;
+      display: flex;
+      justify-content: space-between;
+   }
+
+}
+
+.container-main {
+   max-width: 1200px;
+   padding: 0px 50px;
+   margin: 0 auto;
+   position: relative;
+   z-index: 1;
+}
+.title {
+   font-weight: 700;
+   font-size: 80px;
+   line-height: 94px;
+}
+.subtitle {
+   font-weight: 400;
+   font-size: 23px;
+   line-height: 27px;
+}

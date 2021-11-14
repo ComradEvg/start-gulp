@@ -15,6 +15,8 @@ function browsersync(){
 
 function scripts(){ 
    return src([
+      'app/js/select.js',
+      'app/js/BurgerNavigation.js',
       'app/js/main.js'
    ])
    .pipe(concat('main.min.js'))
@@ -52,7 +54,6 @@ function build(){
    .pipe(dest('dist'))
 }
 
-function git(){}
 
 exports.styles = styles;
 exports.watching = watching;

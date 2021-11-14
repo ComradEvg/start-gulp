@@ -12,19 +12,66 @@
 </head>
 
 <body>
+   <svg style="display: none;">
+      <symbol viewBox="0 0 14 9" id="arrow-down">
+         <g>
+            <path
+               d="M6.33594 8.28906C6.6875 8.64062 7.27344 8.64062 7.625 8.28906L12.9375 2.97656C13.3281 2.58594 13.3281 2 12.9375 1.64844L12.0781 0.75C11.6875 0.398438 11.1016 0.398438 10.75 0.75L6.96094 4.53906L3.21094 0.75C2.85938 0.398438 2.27344 0.398438 1.88281 0.75L1.02344 1.64844C0.632812 2 0.632812 2.58594 1.02344 2.97656L6.33594 8.28906Z" />
+         </g>
+      </symbol>
+   </svg>
    <div class="wrapper">
       <main class="page">
          <header class="header">
             <div class="burger"><span></span></div>
-
-
+            <div class="container">
+               <div class="header__inner">
+                  <nav class="menu">
+                     <ul class="menu__inner">
+                        <li class="menu__item">
+                           <a href="#" class="menu__link menu__link-first">home</a>
+                        </li>
+                     </ul>
+                     <div class="menu__inner">
+                        <div class="menu__link" id="select"></div>
+                     </div>
+                     <ul class="menu__inner">
+                        <li class="menu__item">
+                           <a href="#" class="menu__link">Certifications</a>
+                        </li>
+                        <li class="menu__item">
+                           <a href="#" class="menu__link">Contact</a>
+                        </li>
+                     </ul>
+                  </nav>
+                  <div class="header__btn-inner">
+                     <div class="header__btn-caption">Check status</div>
+                     <button class="btn btn-header">Delivery status</button>
+                  </div>
+               </div>
+            </div>
          </header>
          <div class="main-screen">
+            <div class="main-screen__bg-image">
+               <img src="../images/bg-girl.jpg" alt="bg-girl">
+            </div>
+            <div class="container-main">
+               <div class="main-screen__information-inner">
+                  <div class="main-screen__information-title title">We Fix It All</div>
+                  <div class="main-screen__information-subtitle subtitle">Lorem ipsum dolor sit amet, consectetur
+                     adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                     aliqua.</div>
+                  <div class="main-screen__information-btn-inner">
+                     <button class="btn">Learn more</button>
+                     <button class="btn">Start now</button>
+                  </div>
+               </div>
+            </div>
          </div>
          <div class="content">
          </div>
          <footer class="footer">
-            <div class="container">
+            <div class="container" data-section="move">
                <div class="footer__row">
 
                </div>
@@ -32,6 +79,8 @@
          </footer>
       </main>
    </div>
+   <script src="js/select.js"></script>
+   <script src="js/BurgerNavigation.js"></script>
    <script src="js/main.js"></script>
 </body>
 
