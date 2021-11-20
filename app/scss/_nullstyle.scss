@@ -81,6 +81,7 @@ img {
    vertical-align: top;
 }
 a {
+   display: block;
    color: inherit;
 }
 
@@ -114,6 +115,7 @@ $md4: 479.98;
    }
 }
 // =========================
+
 body {
    font-family: "Roboto";
    font-weight: 400;

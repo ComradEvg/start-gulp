@@ -1,6 +1,9 @@
 @import "_fonts";
 @import "_nullstyle";
 
+/* Вспомогатеьная информация: 
+1) flex: grow shrink basis(размер) */
+
 body.lock {
    @media (max-width: 767px), (max-height: 767px) {
       overflow: hidden;
@@ -39,15 +42,49 @@ body.lock {
    font-size: 22px;
    line-height: 26px;
    width: 200px;
-   height: 70px;
+   padding: 23px 0px;
    border: 2px solid #000;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    &:hover {
       background-color: #000;
       color: #fff;
       cursor: pointer;
       transition: 0.15s background-color ease-in;
    }
+   @media (max-width: 1125px) {
+      width: 0;
+      flex: 0 2 48%;
+   }
+   @media (max-width: 1000px) {
+      font-size: calc(15px + (7 + 7 * 0.7) * ((100vw - 320px) / 1200));
+   }
 }
+.title {
+   font-weight: 700;
+   font-size: 80px;
+   line-height: 94px;
+   @media (max-width: 1125px) {
+      font-size: 60px;
+      line-height: 70px;
+   }
+   @media (max-width: 1000px) {
+      font-size: calc(21px + (59 + 59 * 0.7) * ((100vw - 320px) / 1200));
+      line-height: calc(44px + (26 + 26 * 0.7) * ((100vw - 320px) / 1200));
+   }
+}
+.subtitle {
+   font-weight: 400;
+   font-size: 23px;
+   line-height: 27px;
+   @media (max-width: 1000px) {
+      text-align: justify;
+      font-size: calc(14px + (9 + 9 * 0.7) * ((100vw - 320px) / 1200));
+      line-height: calc(20px + (7 + 7 * 0.7) * ((100vw - 320px) / 1200));
+   }
+}
+
 // ==================================
 // ШАПКА
 @import "_header.scss";
@@ -59,10 +96,12 @@ body.lock {
    overflow: hidden;
    background-color: #f7d5ca;
    padding-top: $height;
-   
-   @media (orientation: portrait) and (max-width: 1280px) {
-      flex: none;
-      height: 800px;
+
+   @media (orientation: portrait) and (max-width: 768px) {
+      padding-top: 0;
+   }
+   @media (orientation: landscape) and (max-height: 768px) {
+      padding-top: 0;
    }
 
    &__bg-image {
@@ -72,49 +111,203 @@ body.lock {
       right: 0;
       height: 100%;
       img {
+         display: block;
          object-fit: contain;
          height: 100%;
+      }
+      @media (orientation: portrait) and (max-width: 768px) {
+         padding-top: 0;
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         padding-top: 0;
       }
    }
 
    &__information-inner {
-      width: 665px;
-      height: 415px;
+      max-width: 665px;
       background-color: #fff;
       padding: 50px 60px 45px 60px;
       margin-top: 73px;
+      flex: 0 5 55%;
+      @media (orientation: portrait) and (max-width: 768px) {
+         flex: 0 5 55%;
+         padding: 17px;
+      }
+      @media (orientation: landscape) and (max-height: 768px) {
+         flex: 0 5 55%;
+         padding: 17px;
+      }
+      @media (max-width: 400px) {
+         display: flex;
+         flex-direction: column;
+         margin: auto 0 10px;
+         justify-content: end;
+      }
    }
 
    &__information-title {
       margin-bottom: 32px;
+      @media (max-width: 400px) {
+         margin-bottom: 8px;
+      }
    }
 
    &__information-subtitle {
-       margin-bottom: 41px;
+      margin-bottom: 41px;
+      @media (max-width: 400px) {
+         margin-bottom: 10px;
+      }
    }
 
    &__information-btn-inner {
-      width: 415px;
+      max-width: 415px;
       display: flex;
       justify-content: space-between;
+      font-size: calc(15px + (7 + 7 * 0.7) * ((100vw - 320px) / 1200));
+      @media (orientation: portrait) and (max-width: 600px) {
+         margin: 0px -5px;
+      }
+      @media (orientation: landscape) and (max-height: 600px) {
+         margin: 0px -5px;
+      }
+      @media (max-width: 400px) {
+         margin: 0;
+         flex-direction: column;
+      }
    }
-
+   &__information-btn-inner button {
+      margin: 10px 5px 0px;
+      min-width: none;
+      @media (max-width: 1000px) {
+         padding: 10px 0px;
+      }
+      @media (max-width: 400px) {
+         margin: 10px 0px 0px;
+         width: 100%;
+      }
+   }
 }
 
+.height-active {
+   flex: none;
+}
 .container-main {
    max-width: 1200px;
    padding: 0px 50px;
    margin: 0 auto;
    position: relative;
    z-index: 1;
+   display: flex;
+   @media (orientation: portrait) and (max-width: 600px) {
+      padding: 0px 10px;
+   }
+   @media (orientation: landscape) and (max-height: 600px) {
+      padding: 0px 10px;
+   }
+   @media (max-width: 400px) {
+      height: 100%;
+   }
 }
-.title {
-   font-weight: 700;
-   font-size: 80px;
-   line-height: 94px;
+
+// SERVICES=============================
+.services {
+   &__description {
+      font-size: 22px;
+      line-height: 26px;
+      text-align: left;
+      margin-top: 50px;
+   }
+
+   &__card-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 -25px;
+   }
+
+   &__card {
+      flex: 1 1 40%;
+      margin: 50px 25px 0;
+   }
 }
-.subtitle {
-   font-weight: 400;
-   font-size: 23px;
-   line-height: 27px;
+.more-blue {
+   background-color: #9accd2;
+}
+.orange {
+   background-color: #f0c59d;
+}
+.purple {
+   background-color: #a871b1;
+}
+.blue {
+   background-color: #c5e3e8;
+}
+.card {
+   font-size: 22px;
+   line-height: 26px;
+   text-align: left;
+   @media (max-width: 1000px) {
+         font-size: 17px;
+         line-height: 22px;
+      }
+
+   &__inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 35px;
+      height: 100%;
+   }
+
+   &__icon {
+      background-color: #000;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+   }
+   &__icon svg {
+      fill: #fff;
+      object-fit: cover;
+      width: 50%;
+   }
+   &__title {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 59px;
+      text-align: left;
+      margin-bottom: 40px;
+      @media (max-width: 1000px) {
+         font-size: 38px;
+         line-height: 49px;
+         margin-bottom: 30px;
+      }
+   }
+
+   &__description {
+      margin-bottom: 40px;
+      flex: 1 1 auto;
+   }
+
+   &__link-box {
+   }
+
+   &__link-item {
+      font-weight: 600;
+      text-decoration: underline;
+   }
+}
+
+@import "swiper.scss";
+
+.swiper-slide{
+   height: auto;
+   .services__card{
+      height: 100%;
+      margin: 20px 0 0;
+   }
 }

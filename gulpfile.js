@@ -8,7 +8,7 @@ const autoprefixer = require('gulp-autoprefixer');
 function browsersync(){
    browserSync.init({
       server: {
-         baseDir: 'app/'
+         baseDir: 'app'
       }
    })
 }
@@ -17,6 +17,7 @@ function scripts(){
    return src([
       'app/js/select.js',
       'app/js/BurgerNavigation.js',
+      'app/js/swiper-bundle.min.js',
       'app/js/main.js'
    ])
    .pipe(concat('main.min.js'))
@@ -49,7 +50,7 @@ function build(){
       'app/fonts/**/*',
       'app/js/main.min.js',
       'app/*.html',
-      'app/images/**/* '
+      'app/images/**/*'
    ], {base: 'app'})
    .pipe(dest('dist'))
 }
@@ -60,5 +61,6 @@ exports.watching = watching;
 exports.browsersync = browsersync;
 exports.scripts = scripts;
 exports.build = build;
+
 
 exports.default = parallel(scripts, browsersync, watching);
