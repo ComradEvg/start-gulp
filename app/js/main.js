@@ -7,6 +7,7 @@ const btnNav = document.querySelector(".header__btn-inner");
 const mainBgPicture = document.querySelector("#imageBg");
 const $mainScreen = document.querySelector('.main-screen');
 const $mainScreenBg = document.querySelector('.main-screen__bg-image');
+const $burgerArticles = document.querySelector(".articles__burger");
 
 const pageWidth = document.documentElement.clientWidth
 const pageHeight = document.documentElement.clientHeight
@@ -36,16 +37,19 @@ startNavigation();
 
 function mainScreenBg(){
    if ((mainBgPicture.clientWidth / pageWidth)*100 >= 76){
-      console.log($mainScreen.style.transformStyle)
       $mainScreen.classList.add('height-active');
       $mainScreen.style.height = `${pageHeight*0.8}px`;     
       $mainScreenBg.style.width = "100%"
       mainBgPicture.setAttribute('style', `width: ${pageWidth * 0.7}px; object-fit: cover; margin-left: auto;`)
-      /* Данная функция отменяет main-screen на 100% экрана, в связи с эим меняются стили фотограф, все изменнеия просчитываются в зависимости от ширины экрана */
+      /* Данная функция отменяет main-screen на 100% экрана, в связи с этим меняются стили фотограф, все изменнеия просчитываются в зависимости от ширины экрана */
    }
 };
 
 mainScreenBg();
+
+$burgerArticles.addEventListener('click', ()=>{
+   $burgerArticles.classList.toggle('active-burger-articles')
+})
 
 // window.addEventListener('scroll', function () {
 //    if (50 < window.pageYOffset && window.innerWidth >= 769 && window.innerHeight >= 769) {
@@ -75,12 +79,23 @@ const select = new Select('#select', {
    }
 })
 
-// const swiper = new Swiper(".swiper", {
-//    pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//    },
-// })
+const swiper = new Swiper(".swiper-gallery", {
+   breakpoints:{
+      319: {
+         slidesPerView: 1.1,
+      },
+      450: {
+         slidesPerView: 2.1,
+      }
+   }, 
+   preloadImages: false,
+   lazy: {
+      loadOnTransitionStart: false,
+      loadPrevNext: true,
+   },
+   watchSlidersProgress: true,
+   watchSlidersVisibility: true,
+})
 
 
 function sliderOn(){

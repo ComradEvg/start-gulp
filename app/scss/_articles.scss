@@ -1,0 +1,86 @@
+.articles {
+   display: none;
+   position: fixed;
+   top: 50px;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 30;
+   // display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 24px;
+   font-weight: 500;
+   line-height: 28px;
+   text-align: left;
+
+   &__inner {
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(15.5px);
+      -webkit-backdrop-filter: blur(15.5px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 80%;
+      height: 80%;
+      padding: 75px 23px 0;
+      color: rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+      position: relative;
+   }
+
+   &__burger {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: 10px;
+      top: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.8); 
+      cursor: pointer;
+      transition: .5s ease-in-out;
+   }
+   &__burger span{
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 3px;
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.8);
+     
+   }
+   &__burger span:first-child{
+      transform: rotate(-45deg);
+   }
+   &__burger span:last-child{
+      transform: rotate(45deg);
+   }
+   &__title {
+      padding: 0 23px;
+      margin-bottom: 50px;
+   }
+
+   &__opinions-inner {
+      height: 100%;
+      overflow-y: auto;
+   }
+}
+.opinion {
+   &__inner {
+      margin-bottom: 40px;
+   }
+
+   &__title {
+   }
+
+   &__articles {
+      text-align: justify;
+   }
+}
+
+.active-burger-articles{
+   transform: rotate(360deg);
+}

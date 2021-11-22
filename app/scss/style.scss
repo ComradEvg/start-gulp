@@ -1,8 +1,15 @@
 @import "_fonts";
 @import "_nullstyle";
+@import "_articles";
 
 /* Вспомогатеьная информация: 
 1) flex: grow shrink basis(размер) */
+section {
+   margin-top: 100px;
+   @media (max-width: 1200px) {
+      margin-top: 30 / 1200 * 100vw;
+   }
+}
 
 body.lock {
    @media (max-width: 767px), (max-height: 767px) {
@@ -41,12 +48,12 @@ body.lock {
    font-weight: 500;
    font-size: 22px;
    line-height: 26px;
-   width: 200px;
    padding: 23px 0px;
    border: 2px solid #000;
    display: flex;
    justify-content: center;
    align-items: center;
+   flex: 1 1 auto;
    &:hover {
       background-color: #000;
       color: #fff;
@@ -54,7 +61,6 @@ body.lock {
       transition: 0.15s background-color ease-in;
    }
    @media (max-width: 1125px) {
-      width: 0;
       flex: 0 2 48%;
    }
    @media (max-width: 1000px) {
@@ -70,8 +76,8 @@ body.lock {
       line-height: 70px;
    }
    @media (max-width: 1000px) {
-      font-size: calc(21px + (59 + 59 * 0.7) * ((100vw - 320px) / 1200));
-      line-height: calc(44px + (26 + 26 * 0.7) * ((100vw - 320px) / 1200));
+      font-size: calc(26px + (67 + 67 * 0.7) * ((100vw - 320px) / 1200));
+      line-height: calc(31px + (39 + 39 * 0.7) * ((100vw - 320px) / 1200));
    }
 }
 .subtitle {
@@ -80,11 +86,21 @@ body.lock {
    line-height: 27px;
    @media (max-width: 1000px) {
       text-align: justify;
-      font-size: calc(14px + (9 + 9 * 0.7) * ((100vw - 320px) / 1200));
+      font-size: calc(13px + (10 + 10 * 0.7) * ((100vw - 320px) / 1200));
       line-height: calc(20px + (7 + 7 * 0.7) * ((100vw - 320px) / 1200));
    }
 }
 
+.title-card {
+   font-size: 50px;
+   font-weight: 700;
+   line-height: 59px;
+   text-align: left;
+   @media (max-width: 1000px) {
+      font-size: 38px;
+      line-height: 49px;
+   }
+}
 // ==================================
 // ШАПКА
 @import "_header.scss";
@@ -147,6 +163,7 @@ body.lock {
 
    &__information-title {
       margin-bottom: 32px;
+      white-space: nowrap;
       @media (max-width: 400px) {
          margin-bottom: 8px;
       }
@@ -212,8 +229,6 @@ body.lock {
 // SERVICES=============================
 .services {
    &__description {
-      font-size: 22px;
-      line-height: 26px;
       text-align: left;
       margin-top: 50px;
    }
@@ -222,12 +237,17 @@ body.lock {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      margin: 0 -25px;
    }
 
    &__card {
       flex: 1 1 40%;
-      margin: 50px 25px 0;
+      margin: 50px 0px 0;
+   }
+   &__card:nth-child(odd) {
+      margin-right: 25px;
+   }
+   &__card:nth-child(even) {
+      margin-left: 25px;
    }
 }
 .more-blue {
@@ -247,9 +267,9 @@ body.lock {
    line-height: 26px;
    text-align: left;
    @media (max-width: 1000px) {
-         font-size: 17px;
-         line-height: 22px;
-      }
+      font-size: 17px;
+      line-height: 22px;
+   }
 
    &__inner {
       display: flex;
@@ -276,14 +296,8 @@ body.lock {
       width: 50%;
    }
    &__title {
-      font-size: 50px;
-      font-weight: 700;
-      line-height: 59px;
-      text-align: left;
       margin-bottom: 40px;
       @media (max-width: 1000px) {
-         font-size: 38px;
-         line-height: 49px;
          margin-bottom: 30px;
       }
    }
@@ -304,10 +318,233 @@ body.lock {
 
 @import "swiper.scss";
 
-.swiper-slide{
+.swiper-slide {
    height: auto;
-   .services__card{
+   .services__card {
       height: 100%;
       margin: 20px 0 0;
+   }
+}
+
+// HOME-AND-BUSINESS===============
+.home-and-business {
+   display: flex;
+
+   &__inform {
+      flex: 0 1 50%;
+      align-self: flex-end;
+      @media (max-width: 450px) {
+         flex: 1 1 50%;
+      }
+   }
+
+   &__image {
+      flex: 1 1 50%;
+      @media (max-width: 450px) {
+         display: none;
+      }
+   }
+
+   &__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
+.inform {
+   padding: 27px;
+
+   &__inner {
+   }
+   &__inner .title {
+      margin-bottom: 60px;
+   }
+
+   &__logo-inner {
+      margin-top: 25px;
+      padding: 33px 0px 23px;
+      border-top: 1px solid #000000;
+   }
+}
+.logo {
+   &__title {
+      font-weight: 700;
+      margin-bottom: 25px;
+   }
+
+   &__subtitle {
+      margin-bottom: 40px;
+   }
+
+   &__image {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 -21px;
+   }
+
+   &__image-item {
+      margin: 0 21px;
+      @media (max-width: 1200px) {
+         margin: 0 21 / 1200 * 100vw;
+      }
+   }
+   &__image-item img {
+      width: 100%;
+      height: 100%;
+   }
+}
+
+// FIX FOR YOU===========================
+
+.fix-for-you {
+   background-color: #f0c59d;
+
+   &__inner {
+      display: flex;
+      align-items: center;
+      padding: 40px 0px;
+   }
+
+   &__title {
+      flex: 1 1 50%;
+   }
+
+   &__description-inner {
+      flex: 1 1 50%;
+   }
+}
+.fix-for-you-description {
+   @media (max-width: 1000px) {
+      text-align: justify;
+      font-size: calc(9px + (14 + 14 * 0.7) * (100vw - 320px) / 1200);
+      line-height: calc(12px + (15 + 15 * 0.7) * (100vw - 320px) / 1200);
+   }
+   &__inform {
+      margin-bottom: 34px;
+      @media (max-width: 1000px) {
+         margin-bottom: 20px;
+      }
+   }
+
+   &__link-box {
+   }
+
+   &__link {
+      font-weight: 600;
+      text-decoration: underline;
+   }
+}
+
+// SWIPER-GALLERY===================
+
+.swiper-gallery {
+   overflow-x: hidden;
+}
+
+.gallery__inner img {
+   width: 100%;
+   object-fit: contain;
+}
+
+// EASY-AND-SIMPLE======================
+
+.easy-and-simple {
+   background-color: #65c5d2;
+   padding: 44px;
+   &__inner {
+      background-color: #fff;
+      padding: 60px 30px;
+      display: flex;
+      @media (max-width: 400px) {
+         padding: 30px 30px;
+      }
+   }
+
+   &__image {
+      flex: 1 1 50%;
+      @media (max-width: 650px) {
+         display: none;
+      }
+   }
+   &__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   &__info {
+      flex: 1 1 50%;
+      margin-left: 35px;
+      align-self: flex-end;
+      @media (max-width: 650px) {
+         margin-left: 0px;
+      }
+   }
+}
+.info {
+   &__title {
+      margin-bottom: 67px;
+      @media (max-width: 1200px) {
+         margin-bottom: 67 / 1200 * 100vw;
+      }
+   }
+   &__btn-inner {
+      margin-top: 44px;
+      display: flex;
+   }
+   &__btn-inner button {
+      flex: 0 2 60%;
+      @media (max-width: 650px) {
+         flex: 1 2 60%;
+      }
+   }
+}
+
+// OUR-CLIENTS===========================
+.our-clients {
+   &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   &__subtitle {
+      margin-top: 44px;
+      margin-bottom: 66px;
+      font-weight: 400;
+      font-size: 23px;
+      line-height: 26px;
+      @media (max-width: 1200px) {
+         margin-top: 44 / 1200 * 100vw;
+         margin-bottom: 66 / 1200 * 100vw;
+      }
+      @media (max-width: 1000px) {
+         text-align: justify;
+         font-size: calc(12px + (11 + 11 * 0.7) * ((100vw - 320px) / 1200));
+         line-height: calc(19px + (8 + 8 * 0.7) * ((100vw - 320px) / 1200));
+      }
+   }
+
+   &__logo{
+      width: 100%;
+   }
+
+   &__link-box {
+      margin-top: 44px;
+      @media (max-width: 1200px) {
+         margin-top: 44 / 1200 * 100vw;
+      }
+   }
+   &__link {
+      font-weight: 600;
+      text-decoration: underline;
+   }
+}
+.logo {
+   &__image {
+   }
+
+   &__image-item {
    }
 }
