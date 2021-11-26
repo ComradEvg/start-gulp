@@ -17,6 +17,7 @@ function scripts(){
    return src([
       'app/js/select.js',
       'app/js/BurgerNavigation.js',
+      'app/js/ArticlesLibrary.js',
       'app/js/swiper-bundle.min.js',
       'app/js/main.js'
    ])

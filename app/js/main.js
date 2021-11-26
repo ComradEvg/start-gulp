@@ -23,22 +23,22 @@ function ibgmy() {
 }
 ibgmy();
 
-function startNavigation(){
-const styleDisplayBurger = getComputedStyle(burger).display;
-   
-if(styleDisplayBurger === "block"){
-   new BurgerNavigation (burger, nav, btnNav); /* btnNav необходимо сделать не обзяательной см. про оператор "?." */
-}
-else{
-   nav.addEventListener("click", BurgerNavigation.ScrollNav)
-}
+function startNavigation() {
+   const styleDisplayBurger = getComputedStyle(burger).display;
+
+   if (styleDisplayBurger === "block") {
+      new BurgerNavigation(burger, nav, btnNav); /* btnNav необходимо сделать не обзяательной см. про оператор "?." */
+   }
+   else {
+      nav.addEventListener("click", BurgerNavigation.ScrollNav)
+   }
 };
 startNavigation();
 
-function mainScreenBg(){
-   if ((mainBgPicture.clientWidth / pageWidth)*100 >= 76){
+function mainScreenBg() {
+   if ((mainBgPicture.clientWidth / pageWidth) * 100 >= 76) {
       $mainScreen.classList.add('height-active');
-      $mainScreen.style.height = `${pageHeight*0.8}px`;     
+      $mainScreen.style.height = `${pageHeight * 0.8}px`;
       $mainScreenBg.style.width = "100%"
       mainBgPicture.setAttribute('style', `width: ${pageWidth * 0.7}px; object-fit: cover; margin-left: auto;`)
       /* Данная функция отменяет main-screen на 100% экрана, в связи с этим меняются стили фотограф, все изменнеия просчитываются в зависимости от ширины экрана */
@@ -46,10 +46,6 @@ function mainScreenBg(){
 };
 
 mainScreenBg();
-
-$burgerArticles.addEventListener('click', ()=>{
-   $burgerArticles.classList.toggle('active-burger-articles')
-})
 
 // window.addEventListener('scroll', function () {
 //    if (50 < window.pageYOffset && window.innerWidth >= 769 && window.innerHeight >= 769) {
@@ -80,14 +76,14 @@ const select = new Select('#select', {
 })
 
 const swiper = new Swiper(".swiper-gallery", {
-   breakpoints:{
+   breakpoints: {
       319: {
          slidesPerView: 1.1,
       },
       450: {
          slidesPerView: 2.1,
       }
-   }, 
+   },
    preloadImages: false,
    lazy: {
       loadOnTransitionStart: false,
@@ -98,49 +94,61 @@ const swiper = new Swiper(".swiper-gallery", {
 })
 
 
-function sliderOn(){
-   if (pageWidth <= 915){
+function sliderOn() {
+   if (pageWidth <= 915) {
       const sliderElements = document.querySelectorAll('.services__card')
       const sliderInner = document.querySelector('.services__card-inner')
       sliderInner.classList.add('swiper')
       sliderInner.classList.remove('services__card-inner')
-      if(sliderInner.classList.contains('swiper')){
-         sliderElements.forEach(elem =>{
+      if (sliderInner.classList.contains('swiper')) {
+         sliderElements.forEach(elem => {
             elem.remove()
          })
          sliderInner.insertAdjacentHTML('beforeend', `<div class="swiper-wrapper"></div>
          <div class="swiper-pagination"></div>`);
-         for (let i = 0; i <= sliderElements.length-1; i++){
+         for (let i = 0; i <= sliderElements.length - 1; i++) {
             sliderInner.children[0].insertAdjacentHTML('beforeend', `<div class="swiper-slide">${sliderElements[i].outerHTML}</div>`);
-            
+
          }
-               new Swiper(".swiper", {
-                  pagination: {
-                     el: ".swiper-pagination",
-                     clickable: true,
-                  },
-               })
+         const swiper1 = new Swiper(".swiper", {
+            pagination: {
+               el: ".swiper-pagination",
+               clickable: true,
+            },
+         })
+
+
       }
 
    }
 }
 sliderOn()
 
+new ArticlesLibrary('.pop-up-link', {
+   SmartphoneRepair: {
+      captionPop: 'Smartphones Repair',
+      textPop: [
+         {
+            titleArticle: 'Broken Screens',
+            descriptionArticle: 'Lorem ipsum dolor sit amet, consectetur adipisicingelit.Iusto voluptates dolorem, odit enim! Aspernatur quos ipsa,sit! Repudiandae, laboriosam enim aliquam, similique suscipit quas dicta voluptate repellendus distinctio laborum at!'
+         },
+         {
+            titleArticle: 'Liquid Damage',
+            descriptionArticle: 'Lorem ipsum dolor sit amet, consectetur adipisicingelit.Iusto voluptates dolorem, odit enim! Aspernatur quos ipsa,sit! Repudiandae, laboriosam enim aliquam, similique suscipit quas dicta voluptate repellendus distinctio laborum at!'
+         },
+         {
+            titleArticle: 'Camera Replacement',
+            descriptionArticle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto voluptatesdolorem, odit enim! Aspernatur quos ipsa, sit! Repudiandae, laboriosam enim aliquam, similique suscipit quas dicta voluptate repellendus distinctio laborum at!'
+         },
+         {
+            titleArticle: 'Not charging',
+            descriptionArticle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto voluptates dolorem, odit enim! Aspernatur quos ipsa,sit! Repudiandae, laboriosam enim aliquam, similique suscipit quas dicta voluptate repellendus distinctio laborum at!'
+         },
+
+      ]
+   }
+})
 
 
 
-// Сделать это действие по определенному экрану
 
-
-/*                < div class="swiper" >
-							< !--Additional required wrapper-- >
-							<div class="swiper-wrapper">
-								<!-- Slides -->
-								<div class="swiper-slide">
-								</div>
-								
-							</div>
-							<div class="swiper-pagination"></div>
-						</div >
- */
-   

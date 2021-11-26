@@ -526,7 +526,7 @@ body.lock {
       }
    }
 
-   &__logo{
+   &__logo {
       width: 100%;
    }
 
@@ -547,4 +547,89 @@ body.lock {
 
    &__image-item {
    }
+}
+
+// same-day-repairs=======================
+
+.same-day-repairs {
+   &__inner {
+      display: flex;
+      @media (max-width: 650px) {
+         flex-direction: column;
+      }
+   }
+
+   &__image {
+      flex: 1 1 50%;
+   }
+   &__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   &__info {
+      flex: 1 1 50%;
+      margin-left: 35px;
+      margin-right: 27px;
+      align-self: flex-end;
+      @media (max-width: 650px) {
+         margin-left: 27px;
+      }
+   }
+}
+
+// decor==============================
+
+.decor {
+   &__inner {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__item {
+      flex: 0 1 49%;
+   }
+
+   &__item:first-child,
+   &__item:last-child {
+      flex: 0 1 25%;
+   }
+   &__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
+
+// IPHONE-REPAIRS ========================
+.iphone-repairs {
+
+		&__inner {
+		}
+
+		&__top {
+		}
+
+		&__title {
+		}
+
+		&__icon {
+		}
+
+		&__opinions-inner {
+		}
+}
+.arrow-down {
+}
+.opinion {
+
+		&__inner {
+		}
+
+		&__title {
+		}
+
+		&__articles {
+		}
 }
