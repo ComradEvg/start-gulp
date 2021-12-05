@@ -69,10 +69,10 @@ class ArticlesLibrary {
       }
       else {
          const innerhtml = arrData.textPop.map(item => {
-            return `<div class="opinion__inner">
+            return `<li class="opinion__inner">
                    <p class="opinion__title">${item.titleArticle}</p>
                    <p class="opinion__articles">${item.descriptionArticle}</p>
-                 </div>`
+                 </li>`
          })
          return `<div class="articles">
                            <div class="articles__inner">
@@ -81,7 +81,7 @@ class ArticlesLibrary {
                                  <span></span>
                               </div>
                               <div class="articles__title">${data.captionPop}</div>
-                              <div class="articles__opinions-inner">${innerhtml.join('')}</div>
+                              <ul class="articles__opinions-inner">${innerhtml.join('')}</ul>
                            </div>
                         </div>`
       }

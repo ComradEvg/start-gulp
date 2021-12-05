@@ -66,6 +66,9 @@ body.lock {
    @media (max-width: 1000px) {
       font-size: calc(15px + (7 + 7 * 0.7) * ((100vw - 320px) / 1200));
    }
+   @media (max-width: 400px) {
+      padding: 12px 0px;
+   }
 }
 .title {
    font-weight: 700;
@@ -263,11 +266,10 @@ body.lock {
    background-color: #c5e3e8;
 }
 .card {
-   font-size: 22px;
    line-height: 26px;
+   font-size: 23px;
    text-align: left;
    @media (max-width: 1000px) {
-      font-size: 17px;
       line-height: 22px;
    }
 
@@ -278,6 +280,9 @@ body.lock {
       align-items: flex-start;
       padding: 35px;
       height: 100%;
+      @media (max-width: 400px) {
+         padding: 25px;
+      }
    }
 
    &__icon {
@@ -289,6 +294,9 @@ body.lock {
       justify-content: center;
       align-items: center;
       margin-bottom: 40px;
+      @media (max-width: 1200px) {
+         margin-bottom: 40 / 1200 * 100vw;
+      }
    }
    &__icon svg {
       fill: #fff;
@@ -297,14 +305,17 @@ body.lock {
    }
    &__title {
       margin-bottom: 40px;
-      @media (max-width: 1000px) {
-         margin-bottom: 30px;
+      @media (max-width: 1200px) {
+         margin-bottom: 40 / 1200 * 100vw;
       }
    }
 
    &__description {
       margin-bottom: 40px;
       flex: 1 1 auto;
+      @media (max-width: 1200px) {
+         margin-bottom: 40 / 1200 * 100vw;
+      }
    }
 
    &__link-box {
@@ -353,9 +364,6 @@ body.lock {
 }
 .inform {
    padding: 27px;
-
-   &__inner {
-   }
    &__inner .title {
       margin-bottom: 60px;
    }
@@ -604,32 +612,115 @@ body.lock {
 
 // IPHONE-REPAIRS ========================
 .iphone-repairs {
+   &__inner {
+   }
 
-		&__inner {
-		}
+   &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-bottom: 1px solid #c4c4c4;
+      padding-bottom: 39px;
+   }
 
-		&__top {
-		}
+   &__title {
+   }
 
-		&__title {
-		}
+   &__icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000;
+      border-radius: 50%;
+      transition: 0.3s;
+      transform: rotate(0deg);
+   }
 
-		&__icon {
-		}
-
-		&__opinions-inner {
-		}
+   &__opinions-inner {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      overflow: hidden;
+      height: 0;
+   }
 }
 .arrow-down {
+   width: 80%;
+   height: 80%;
+   cursor: pointer;
 }
-.opinion {
+.iphone-repairs .opinion {
+   &__inner {
+      margin-bottom: 0;
+   }
 
-		&__inner {
-		}
+   &__title {
+      font-weight: 700;
+   }
 
-		&__title {
-		}
-
-		&__articles {
-		}
+   &__articles {
+      margin-bottom: 40px;
+   }
 }
+
+.rotate {
+   transform: rotate(180deg);
+}
+
+// FORM==========================================
+
+.form {
+   background-color: #f3e7e7;
+   padding: 65px 0px;
+
+   &__inner {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      max-width: 650px;
+      background-color: #fff;
+      padding: 40px 50px;
+      @media (max-width: 400px) {
+         padding: 30px 20px;
+      }
+   }
+
+   &__item {
+      margin-top: 40px;
+      font-weight: 700;
+      @media (max-width: 1200px) {
+         margin-top: 40 / 1200 * 100vw;
+      }
+   }
+
+   &__name-input,
+   &__email-input {
+      display: block;
+      width: 100%;
+      margin-top: 27px;
+      border-bottom: 1px solid #000000;
+      padding: 18px 10px;
+      font-weight: 400;
+      @media (max-width: 1200px) {
+         margin-top: 27 / 1200 * 100vw;
+      }
+   }
+
+   &__btn-inner {
+      margin-top: 48px;
+      width: 100%;
+      @media (max-width: 1200px) {
+         margin-top: 48 / 1200 * 100vw;
+      }
+   }
+   &__btn-inner .btn {
+      width: 100%;
+   }
+}
+
+@import "_footer.scss";

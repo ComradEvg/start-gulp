@@ -92,7 +92,7 @@ class BurgerNavigation {
 
    static ScrollNav(event) {
       event.preventDefault();
-      const stringEventLower = event.target.text.toLowerCase()
+      const stringEventLower = (!null) ? event.target.textContent.toLowerCase() : "No string"
       const sections = document.querySelectorAll("[data-section]")
       const pageHeight = document.documentElement.clientHeight
       sections.forEach(section => {
@@ -101,7 +101,7 @@ class BurgerNavigation {
          }
       })
    }
-
+   
    BtnAdd(){
       const navElments = this.nav;                                                                        
       const btn = this.navBtn

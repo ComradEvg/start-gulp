@@ -7,7 +7,17 @@ const btnNav = document.querySelector(".header__btn-inner");
 const mainBgPicture = document.querySelector("#imageBg");
 const $mainScreen = document.querySelector('.main-screen');
 const $mainScreenBg = document.querySelector('.main-screen__bg-image');
-const $burgerArticles = document.querySelector(".articles__burger");
+const $captionSpoiler = document.querySelector('.iphone-repairs__top')
+const $textSpoiler = document.querySelector('.iphone-repairs__opinions-inner')
+const $articlesIcon = document.querySelector('.iphone-repairs__icon')
+
+const heghtSpoilerArticles = function () {
+   let height = 0
+   for (let iterator of $textSpoiler.children) {
+      height += iterator.clientHeight
+   }
+   return height
+}/* Функция служит для вычисления в спойлере размера статей для дальнейшей анимации height (см. $captionSpoiler.addEventListener)*/
 
 const pageWidth = document.documentElement.clientWidth
 const pageHeight = document.documentElement.clientHeight
@@ -47,16 +57,6 @@ function mainScreenBg() {
 
 mainScreenBg();
 
-// window.addEventListener('scroll', function () {
-//    if (50 < window.pageYOffset && window.innerWidth >= 769 && window.innerHeight >= 769) {
-//       menuIcon.classList.add("deactive")
-//       headerBG.classList.add("active")
-//    }
-//    else {
-//       menuIcon.classList.remove("deactive")
-//       headerBG.classList.remove("active")
-//    }
-// });
 
 
 const select = new Select('#select', {
@@ -150,5 +150,45 @@ new ArticlesLibrary('.pop-up-link', {
 })
 
 
+$captionSpoiler.addEventListener('click', ()=>{
+      $articlesIcon.classList.toggle('rotate')
+      $textSpoiler.classList.toggle('active-spoiler')
+   if ($textSpoiler.classList.contains('active-spoiler')){
+      const heightSpoiler = heghtSpoilerArticles();
+      animate ({
+         duration: 300,
+
+         timing: (progress)=> {return Math.pow (progress, 2)},
+
+         draw: function (progress){
+            $textSpoiler.style.height = progress * heightSpoiler + "px"}
+      })
+   }
+
+   else{
+      $textSpoiler.style.height = 0 + "px"
+   }
+})
+
+function animate({duration, timing, draw}){
+   let start = performance.now();
+   console.log(start)
+   requestAnimationFrame(function animate(time){
+      let timePassed = (time - start) / duration;
+      if (timePassed > 1){
+         timePassed = 1
+      }
+      let progress = timing(timePassed)
+      draw (progress)
+      if(timePassed < 1){
+         requestAnimationFrame(animate);
+      }
+   })
+}
 
 
+
+
+/* 1. Сделать отмеену выбора в выпадающем списке элемента, чтоб девайс репаир всегда оставался в главе списка 
+2. Поубирать лишние классы в scss
+3. Просмотерть код, на наличие задач*/
